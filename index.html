@@ -1,178 +1,237 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Protection de Caution</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protection Caution</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6; /* Fond clair */
+            color: #333; /* Couleur texte */
+        }
 
-    /* Style du header et du menu */
-    header {
-      background-color: #333;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-    }
+        /* Menu Hamburger */
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
 
-    .menu-hamburger {
-      display: none;
-    }
+        .hamburger-menu div {
+            width: 30px;
+            height: 4px;
+            background-color: #333; /* Couleur des barres */
+            margin: 6px 0;
+            transition: 0.4s;
+        }
 
-    .menu-hamburger-label {
-      display: block;
-      cursor: pointer;
-      width: 30px;
-      height: 3px;
-      background-color: white;
-      margin: 6px 0;
-    }
+        /* Menu latéral (initialement caché) */
+        .side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+            box-shadow: 2px 0px 5px rgba(0,0,0,0.2);
+        }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #333;
-    }
+        /* Liens du menu latéral */
+        .side-menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #333;
+            display: block;
+            transition: 0.3s;
+        }
 
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      display: inline-block;
-    }
+        .side-menu a:hover {
+            background-color: #f1f1f1;
+        }
 
-    nav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
+        /* Bouton Close */
+        .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #333;
+        }
 
-    /* Style du menu dépliable */
-    .menu-hamburger input:checked + .menu-hamburger-label + .menu {
-      display: block;
-    }
+        /* Contenu principal de ton site */
+        .main-content {
+            margin-left: 0;
+            padding: 20px;
+            text-align: center;
+        }
 
-    .menu {
-      display: none;
-      position: absolute;
-      left: 0;
-      top: 50px;
-      background-color: white;
-      width: 200px;
-      padding: 10px 20px;
-      border: 1px solid #ddd;
-    }
+        /* Section des Services */
+        .services {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
 
-    .menu a {
-      color: black;
-      background-color: white;
-      padding: 10px 0;
-      display: block;
-      text-align: left;
-      text-decoration: none;
-    }
+        .services:hover {
+            transform: translateY(-10px);
+        }
 
-    .menu a:hover {
-      background-color: #f4f4f4;
-    }
+        .services h2 {
+            color: #0073e6;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
 
-    /* Style des sections */
-    section {
-      padding: 20px;
-      margin: 20px;
-      background-color: #ffffff;
-      border-radius: 8px;
-    }
+        .services ul {
+            list-style: none;
+            padding: 0;
+        }
 
-    h1, h2 {
-      color: #333;
-    }
+        .services ul li {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
 
-    .cta-btn {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      text-align: center;
-      border-radius: 5px;
-      text-decoration: none;
-    }
+        .services ul li strong {
+            color: #0073e6;
+        }
 
-    .cta-btn:hover {
-      background-color: #45a049;
-    }
+        .services ul li .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
 
-    .contact-btn {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      text-align: center;
-      border-radius: 5px;
-      text-decoration: none;
-    }
+        /* Bouton contactez-nous */
+        .contact-btn {
+            display: inline-block;
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 1.2em;
+        }
 
-    .contact-btn:hover {
-      background-color: #45a049;
-    }
+        .contact-btn:hover {
+            background-color: #005bb5;
+        }
 
-    /* Style du footer */
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #333;
-      color: white;
-      position: relative;
-      width: 100%;
-      bottom: 0;
-      font-size: 12px; /* Réduction de la taille du texte */
-    }
-  </style>
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Animation pour le bouton */
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-btn {
+            animation: slideIn 1s ease-out;
+        }
+
+        /* Style responsive */
+        @media screen and (max-width: 768px) {
+            .services ul li {
+                font-size: 1.1em;
+            }
+            .contact-btn {
+                font-size: 1.1em;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Bienvenue sur notre site de protection des cautions</h1>
-  </header>
-
-  <!-- Menu hamburger -->
-  <div>
-    <input type="checkbox" class="menu-hamburger" id="menu-toggle">
-    <label for="menu-toggle" class="menu-hamburger-label"></label>
-    <div class="menu">
-      <a href="#">Accueil</a>
-      <a href="#">Nos services</a>
-      <a href="#">Assurance</a>
-      <a href="#">Témoignages</a>
-      <a href="#">Contact</a>
+    <!-- Menu Hamburger -->
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
-  </div>
 
-  <!-- Section d'introduction -->
-  <section>
-    <h2>Nos Services</h2>
-    <p>Nous vous proposons un service <strong>gratuit</strong> de protection de votre caution de location. Nous vous offrons une sécurité complète, avec une <strong>assistance juridique</strong> en cas de litige avec votre propriétaire. Grâce à notre <strong>garantie</strong>, vous pouvez dormir sur vos deux oreilles.</p>
-    <a href="mailto:Protection.caution@gmail.com" class="contact-btn">Contactez-nous</a>
-  </section>
+    <!-- Menu latéral -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">&times;</a>
+        <a href="#">Accueil</a>
+        <a href="#">Services</a>
+        <a href="#">Protection des cautions</a>
+        <a href="#">Accompagnement juridique</a>
+        <a href="#">FAQ</a>
+        <a href="#">Témoignages</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+    </div>
 
-  <!-- Section de témoignages -->
-  <section>
-    <h2>Ce que nos clients disent</h2>
-    <p>“Grâce à ce service, nous avons pu récupérer notre caution sans tracas. L'équipe est super réactive et professionnelle!”</p>
-  </section>
+    <!-- Contenu principal de ton site -->
+    <div class="main-content">
+        <h1>Bienvenue sur notre service de protection de caution</h1>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Protection de Caution - Tous droits réservés</p>
-  </footer>
+        <!-- Présentation des services -->
+        <section class="services">
+            <h2>Nos services 🚀</h2>
+            <p>Nous vous offrons une <strong>protection totale</strong> de votre caution locative avec un service <strong>100% gratuit</strong> ! Voici ce que nous vous proposons :</p>
+            <ul>
+                <li><span class="emoji">🔒</span><strong>Gratuité :</strong> Vous bénéficiez de notre service sans frais !</li>
+                <li><span class="emoji">⚖️</span><strong>Sécurité :</strong> Votre caution est <strong>complètement protégée</strong> contre tout litige.</li>
+                <li><span class="emoji">🛡️</span><strong>Accompagnement juridique :</strong> Si vous avez un problème, nos <strong>avocats spécialisés</strong> sont à votre disposition.</li>
+                <li><span class="emoji">📑</span><strong>Assistance complète :</strong> Nous vous accompagnons <strong>à chaque étape</strong> de la procédure.</li>
+            </ul>
+        </section>
+
+        <!-- Bouton Contact -->
+        <section class="contact">
+            <h2>Contactez-nous 📧</h2>
+            <p>Besoin de plus d'informations ? Nous sommes là pour vous aider, n'hésitez pas à nous contacter !</p>
+            <a href="mailto:Protection.caution@gmail.com" class="contact-btn">Contactez-nous</a>
+        </section>
+    </div>
+
+    <script>
+        /* Fonction pour ouvrir le menu */
+        function toggleMenu() {
+            var menu = document.getElementById("sideMenu");
+            if (menu.style.width === "250px") {
+                menu.style.width = "0";
+            } else {
+                menu.style.width = "250px";
+            }
+        }
+
+        /* Fonction pour fermer le menu */
+        function closeMenu() {
+            document.getElementById("sideMenu").style.width = "0";
+        }
+    </script>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Protection Caution. Tous droits réservés.</p>
+    </div>
 
 </body>
 </html>
