@@ -10,8 +10,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff;
-            color: #000;
+            background-color: #f4f7f6; /* Fond léger et clair */
+            color: #333; /* Couleur texte */
         }
 
         /* Menu Hamburger */
@@ -26,7 +26,7 @@
         .hamburger-menu div {
             width: 30px;
             height: 4px;
-            background-color: black;
+            background-color: #333; /* Couleur des barres */
             margin: 6px 0;
             transition: 0.4s;
         }
@@ -38,7 +38,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #fff; /* Fond blanc */
+            background-color: #fff;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -51,13 +51,13 @@
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 25px;
-            color: black; /* Texte en noir */
+            color: #333;
             display: block;
             transition: 0.3s;
         }
 
         .side-menu a:hover {
-            background-color: #ddd;
+            background-color: #f1f1f1;
         }
 
         /* Bouton Close */
@@ -67,51 +67,100 @@
             right: 25px;
             font-size: 36px;
             margin-left: 50px;
-            color: black;
+            color: #333;
         }
 
-        /* Style de la page principale */
+        /* Contenu principal de ton site */
         .main-content {
             margin-left: 0;
             padding: 20px;
             text-align: center;
         }
 
-        /* Style des sections */
-        section {
-            margin-bottom: 40px;
-        }
-
-        h1, h2 {
-            color: #333;
-        }
-
-        .services, .contact {
-            background-color: #fff;
-            padding: 20px;
+        /* Section des Services */
+        .services {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-top: 40px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .services:hover {
+            transform: translateY(-10px);
+        }
+
+        .services h2 {
+            color: #0073e6;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .services ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .services ul li {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .services ul li strong {
+            color: #0073e6;
+        }
+
+        .services ul li .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
         }
 
         /* Bouton contactez-nous */
         .contact-btn {
             display: inline-block;
-            background-color: #333;
+            background-color: #0073e6;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            font-size: 1.2em;
         }
 
         .contact-btn:hover {
-            background-color: #555;
+            background-color: #005bb5;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Animation pour le bouton */
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-btn {
+            animation: slideIn 1s ease-out;
         }
 
         /* Style responsive */
         @media screen and (max-width: 768px) {
-            .main-content {
-                margin-left: 0;
+            .services ul li {
+                font-size: 1.1em;
+            }
+            .contact-btn {
+                font-size: 1.1em;
             }
         }
     </style>
@@ -144,19 +193,20 @@
 
         <!-- Présentation des services -->
         <section class="services">
-            <h2>Nos services</h2>
-            <p>Notre service de protection des cautions vous offre une **garantie totale** sur votre dépôt de garantie locatif, ainsi qu'un **accompagnement juridique** complet en cas de litige avec votre propriétaire.</p>
+            <h2>Nos services 🚀</h2>
+            <p>Nous vous offrons une **protection totale** de votre caution locative avec un service **100% gratuit** ! Voici ce que nous vous proposons :</p>
             <ul>
-                <li><strong>Gratuit :</strong> Notre service est totalement **gratuit** pour tous nos utilisateurs.</li>
-                <li><strong>Sécurité :</strong> Vous bénéficiez d'une **sécurisation complète** de votre caution locative, sans aucun risque pour vous.</li>
-                <li><strong>Accompagnement juridique :</strong> En cas de problème avec votre propriétaire, nous mettons à votre disposition des **avocats spécialisés** pour défendre vos intérêts.</li>
+                <li><span class="emoji">🔒</span><strong>Gratuité :</strong> Vous bénéficiez de notre service sans frais !</li>
+                <li><span class="emoji">⚖️</span><strong>Sécurité :</strong> Votre caution est **complètement protégée** contre tout litige.</li>
+                <li><span class="emoji">🛡️</span><strong>Accompagnement juridique :</strong> Si vous avez un problème, nos **avocats spécialisés** sont à votre disposition.</li>
+                <li><span class="emoji">📑</span><strong>Assistance complète :</strong> Nous vous accompagnons **à chaque étape** de la procédure.</li>
             </ul>
         </section>
 
         <!-- Bouton Contact -->
         <section class="contact">
-            <h2>Contactez-nous</h2>
-            <p>Pour toute demande ou question, n'hésitez pas à nous contacter. Nous sommes là pour vous aider !</p>
+            <h2>Contactez-nous 📧</h2>
+            <p>Besoin de plus d'informations ? Nous sommes là pour vous aider, n'hésitez pas à nous contacter !</p>
             <a href="mailto:Protection.caution@gmail.com" class="contact-btn">Contactez-nous</a>
         </section>
     </div>
@@ -177,6 +227,11 @@
             document.getElementById("sideMenu").style.width = "0";
         }
     </script>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Protection Caution. Tous droits réservés.</p>
+    </div>
 
 </body>
 </html>
