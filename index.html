@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Site</title>
+    <title>Protection Caution</title>
     <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
         /* Style du menu */
         .menu {
             position: fixed;
@@ -13,7 +22,7 @@
             background-color: #333;
             padding: 10px;
             z-index: 1000;
-            width: 200px; /* Largeur du menu */
+            width: 200px;
         }
 
         .menu ul {
@@ -43,10 +52,55 @@
             display: block;
         }
 
-        /* Décaler le contenu principal pour qu'il ne soit pas masqué par le menu */
+        /* Style de la page principale */
         .main-content {
-            margin-left: 220px; /* Ajuste la valeur en fonction de la largeur de ton menu */
+            margin-left: 220px; /* Décalage pour le menu */
             padding: 20px;
+            text-align: center;
+        }
+
+        /* Style des sections */
+        section {
+            margin-bottom: 40px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .services, .contact {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Bouton contactez-nous */
+        .contact-btn {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #555;
+        }
+
+        /* Style responsive */
+        @media screen and (max-width: 768px) {
+            .menu {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
@@ -71,74 +125,26 @@
 
     <!-- Contenu principal de ton site -->
     <div class="main-content">
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protection Caution - Service Gratuit</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #007BFF;
-        }
-        .highlight {
-            font-weight: bold;
-            color: #28a745;
-        }
-        .cta {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            text-align: center;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        Protection des Cautions - 100% Gratuit
-    </header>
-    <div class="container">
-        <h2>Pourquoi choisir notre service ?</h2>
-        <p>Nous assurons une <span class="highlight">sécurité totale</span> pour votre caution de location.</p>
-        <p>En cas de litige, nos avocats vous accompagnent gratuitement pour récupérer l'intégralité de votre caution.</p>
-        <a href="#contact" class="cta">Contactez-nous</a>
+        <h1>Bienvenue sur notre service de protection de caution</h1>
+
+        <!-- Présentation des services -->
+        <section class="services">
+            <h2>Nos services</h2>
+            <p>Notre service de protection des cautions vous offre une **garantie totale** sur votre dépôt de garantie locatif, ainsi qu'un **accompagnement juridique** complet en cas de litige avec votre propriétaire.</p>
+            <ul>
+                <li><strong>Gratuit :</strong> Notre service est totalement **gratuit** pour tous nos utilisateurs.</li>
+                <li><strong>Sécurité :</strong> Vous bénéficiez d'une **sécurisation complète** de votre caution locative, sans aucun risque pour vous.</li>
+                <li><strong>Accompagnement juridique :</strong> En cas de problème avec votre propriétaire, nous mettons à votre disposition des **avocats spécialisés** pour défendre vos intérêts.</li>
+            </ul>
+        </section>
+
+        <!-- Bouton Contact -->
+        <section class="contact">
+            <h2>Contactez-nous</h2>
+            <p>Pour toute demande ou question, n'hésitez pas à nous contacter. Nous sommes là pour vous aider !</p>
+            <a href="mailto:Protection.caution@gmail.com" class="contact-btn">Contactez-nous</a>
+        </section>
     </div>
-    <footer>
-        &copy; 2025 Protection Caution - Service 100% Gratuit
-    </footer>
+
 </body>
 </html>
