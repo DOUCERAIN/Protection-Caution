@@ -14,47 +14,63 @@
             color: #333;
         }
 
-        /* Style du menu */
-        .menu {
+        /* Menu hamburger */
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger-menu div {
+            width: 30px;
+            height: 4px;
+            background-color: black;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* Menu latéral */
+        .side-menu {
+            height: 100%;
+            width: 0;
             position: fixed;
             top: 0;
             left: 0;
             background-color: #333;
-            padding: 10px;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
             z-index: 1000;
-            width: 200px;
         }
 
-        .menu ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .menu li {
-            background-color: #333;
-            padding: 10px;
-            border: 1px solid #ddd;
-            cursor: pointer;
-        }
-
-        .menu li:hover {
-            background-color: #555;
-        }
-
-        .submenu {
-            display: none;
-            list-style-type: none;
-            padding-left: 20px;
-        }
-
-        .menu li:hover .submenu {
+        .side-menu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
             display: block;
+            transition: 0.3s;
+        }
+
+        .side-menu a:hover {
+            background-color: #575757;
+        }
+
+        /* Bouton Close */
+        .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: white;
         }
 
         /* Style de la page principale */
         .main-content {
-            margin-left: 220px; /* Décalage pour le menu */
+            margin-left: 0;
             padding: 20px;
             text-align: center;
         }
@@ -92,12 +108,6 @@
 
         /* Style responsive */
         @media screen and (max-width: 768px) {
-            .menu {
-                width: 100%;
-                height: auto;
-                position: static;
-            }
-
             .main-content {
                 margin-left: 0;
             }
@@ -106,21 +116,24 @@
 </head>
 <body>
 
-    <!-- Menu Dépliable -->
-    <div class="menu">
-        <ul>
-            <li>Accueil</li>
-            <li>Services
-                <ul class="submenu">
-                    <li>Protection des cautions</li>
-                    <li>Accompagnement juridique</li>
-                </ul>
-            </li>
-            <li>FAQ</li>
-            <li>Témoignages</li>
-            <li>À propos</li>
-            <li>Contact</li>
-        </ul>
+    <!-- Menu Hamburger -->
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Menu latéral -->
+    <div id="sideMenu" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">&times;</a>
+        <a href="#">Accueil</a>
+        <a href="#">Services</a>
+        <a href="#">Protection des cautions</a>
+        <a href="#">Accompagnement juridique</a>
+        <a href="#">FAQ</a>
+        <a href="#">Témoignages</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
     </div>
 
     <!-- Contenu principal de ton site -->
@@ -145,6 +158,23 @@
             <a href="mailto:Protection.caution@gmail.com" class="contact-btn">Contactez-nous</a>
         </section>
     </div>
+
+    <script>
+        /* Fonction pour ouvrir le menu */
+        function toggleMenu() {
+            var menu = document.getElementById("sideMenu");
+            if (menu.style.width === "250px") {
+                menu.style.width = "0";
+            } else {
+                menu.style.width = "250px";
+            }
+        }
+
+        /* Fonction pour fermer le menu */
+        function closeMenu() {
+            document.getElementById("sideMenu").style.width = "0";
+        }
+    </script>
 
 </body>
 </html>
