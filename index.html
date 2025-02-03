@@ -3,127 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Nom de l'entreprise] - Page d'accueil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Page d'accueil</title>
     <style>
+        /* Styles globaux */
         body {
-            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            background-color: #f5f5f5;
         }
 
-        /* Section Introduction */
-        #introduction {
-            padding: 50px 20px;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-
-        #introduction h2 {
-            font-size: 2rem;
-            color: #333;
-        }
-
-        #introduction p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #555;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-
-        #introduction strong {
-            font-weight: 700;
-            color: #1e90ff;
-        }
-
-        /* Page principale */
-        .main-content {
-            padding: 60px 20px;
-            background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://images.pexels.com/photos/7415127/pexels-photo-7415127.jpeg') no-repeat center center/cover;
-            text-align: center;
-            color: #333;
+        /* Conteneur principal */
+        .container {
             position: relative;
+            height: 100vh;
+            background: url('https://images.pexels.com/photos/7415127/pexels-photo-7415127.jpeg') no-repeat center center/cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Couche superposée avec dégradé */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 123, 255, 0.6), rgba(0, 123, 255, 0.3));
             z-index: 1;
         }
 
-        .main-content h2 {
-            font-size: 2.5rem;
+        /* Contenu de la page */
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
             margin-bottom: 20px;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 10px 20px;
+        p {
             font-size: 1.2rem;
-            background-color: #1e90ff;
+            margin-bottom: 40px;
+        }
+
+        /* Bouton Inscription */
+        .cta-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
             color: white;
+            background-color: #4caf50; /* Couleur verte douce */
             border: none;
-            cursor: pointer;
-            text-decoration: none;
             border-radius: 5px;
+            cursor: pointer;
             transition: transform 0.3s ease;
         }
 
         .cta-button:hover {
-            transform: scale(1.05);
+            transform: scale(1.1); /* Effet de grossissement au survol */
         }
 
-        /* Section Fonctionnement */
-        #fonctionnement {
-            padding: 50px 20px;
+        /* Section suivante */
+        .section {
+            padding: 60px 20px;
             text-align: center;
-            background-color: #f9f9f9;
+            background-color: #ffffff;
+            color: #333;
         }
 
-        #fonctionnement h2 {
-            font-size: 2rem;
-            color: #333;
+        .section h2 {
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        #fonctionnement p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #555;
-            max-width: 800px;
-            margin: 10px auto;
+        .section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
         }
 
-        #fonctionnement strong {
-            font-weight: 700;
-            color: #1e90ff;
+        /* Section entreprise */
+        .section-entreprise {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            color: #333;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .section-entreprise p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-top: 20px;
+            color: #555;
         }
     </style>
 </head>
 <body>
-    <!-- Section principale avec image de fond -->
-    <section class="main-content">
-        <h2>Protégez votre caution dès maintenant</h2>
-        <a href="#inscription" class="cta-button">Inscrivez-vous maintenant</a>
-    </section>
 
-    <!-- Introduction de l'entreprise -->
-    <section id="introduction">
-        <h2>Bienvenue chez <strong>[Nom de l'entreprise]</strong></h2>
-        <p>
-            <strong>Chez [Nom de l'entreprise]</strong>, notre mission est simple : <strong>protéger votre dépôt de garantie</strong> avec un <strong>service totalement gratuit</strong>, clair et sécurisé. Nous sommes là pour vous offrir une <strong>tranquillité d'esprit</strong>, que vous soyez <strong>étudiant</strong>, <strong>professionnel</strong> ou en <strong>colocation</strong>. Profitez d'un <strong>accompagnement complet</strong>, de l’inscription à la gestion de votre caution, sans stress et en toute sécurité.
-        </p>
-    </section>
+    <!-- Conteneur de la page d'accueil -->
+    <div class="container">
+        <div class="overlay"></div>
 
-    <!-- Explication du fonctionnement -->
-    <section id="fonctionnement">
-        <h2>Comment ça fonctionne ?</h2>
-        <p>
-            1. <strong>Inscription facile</strong> : Remplissez un simple formulaire pour créer votre compte.
-        </p>
-        <p>
-            2. <strong>Dépôt de caution sécurisé</strong> : Déposez votre caution en toute sécurité avec la garantie d'un accusé de réception.
-        </p>
-        <p>
-            3. <strong>Confirmation</strong> : Recevez une confirmation par email et le propriétaire aussi, pour garantir la protection de votre dépôt.
-        </p>
-    </section>
+        <div class="content">
+            <h1>Protégez votre caution en toute sécurité</h1>
+            <p>Inscrivez-vous dès maintenant pour sécuriser votre dépôt de caution, gratuitement et facilement.</p>
+            <button class="cta-button" onclick="window.location.href='/inscription'">Inscrivez-vous maintenant</button>
+        </div>
+    </div>
+
+    <!-- Section entreprise -->
+    <div class="section-entreprise">
+        <h2>Bienvenue chez [Nom de l'entreprise]</h2>
+        <p>Chez [Nom de l'entreprise], notre mission est simple : protéger votre dépôt de garantie avec un service totalement gratuit, clair et sécurisé. Nous sommes là pour vous offrir une tranquillité d'esprit, que vous soyez étudiant, professionnel ou en colocation. Profitez d'un accompagnement complet, de l’inscription à la gestion de votre caution, sans stress et en toute sécurité.</p>
+    </div>
+
+    <!-- Autres sections de la page -->
+    <div class="section">
+        <h2>Des questions ?</h2>
+        <p>Contactez-nous pour plus d'informations.</p>
+    </div>
+
 </body>
 </html>
