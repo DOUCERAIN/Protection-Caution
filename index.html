@@ -3,94 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protection de votre caution - Sécurité & Sérénité</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Page d'Accueil - Protection de Caution</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Reset de base pour garantir la cohérence du design */
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #4A90E2, #ffffff);
-            color: #333;
+            box-sizing: border-box;
+        }
+
+        /* Style pour l'image de fond avec un dégradé bleu clair et foncé */
+        .background-container {
+            background-image: 
+                linear-gradient(
+                    rgba(0, 0, 128, 0.2), /* Bleu très clair en haut */
+                    rgba(0, 0, 128, 0.7), /* Bleu plus foncé au centre */
+                    rgba(0, 0, 128, 0.2) /* Bleu très clair en bas */
+                ), 
+                url('https://images.pexels.com/photos/7415127/pexels-photo-7415127.jpeg'); /* L'image en fond */
+            background-size: cover; /* Cela couvre toute la zone */
+            background-position: center; /* Centre l'image */
+            height: 100vh; /* Hauteur pleine page */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white; /* Couleur du texte */
+            position: relative;
             text-align: center;
         }
-        header {
-            padding: 50px 20px;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #2C3E50;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        .cta-button {
-            background-color: #4A90E2;
-            color: #fff;
-            border: none;
-            padding: 15px 25px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border-radius: 10px;
-            margin-top: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .cta-button:hover {
-            background-color: #357ABD;
-            transform: scale(1.05);
-            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-        }
-        section {
-            padding: 40px 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            margin: 20px;
-        }
-        .badge-securite {
-            background-color: #2C3E50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 1em;
+
+        /* Styliser le titre */
+        .background-container h1 {
+            font-size: 3em;
             font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
-        footer {
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.1);
+
+        /* Styliser le texte introductif */
+        .background-container p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        /* Boutons d'appel à l'action */
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cta-button {
+            background-color: #4CAF50; /* Vert doux */
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            width: 250px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049; /* Légère variation au survol */
+        }
+
+        /* Assurer que le texte reste au-dessus de l'image */
+        .background-container h1, .background-container p {
+            z-index: 2; /* Assurer que le texte reste au-dessus de l'image */
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Protégez votre caution locative gratuitement</h1>
-        <p>Votre dépôt, protégé en toute sérénité. Un service gratuit et 100% sécurisé pour garantir votre tranquillité.</p>
-        <button class="cta-button" onclick="window.location.href='inscription.html'">Inscrivez-vous maintenant</button>
-        <div class="badge-securite">🔒 100% Sécurisé</div>
-    </header>
-    
-    <section id="processus">
-        <h2>Comment ça marche ?</h2>
-        <ul>
-            <li>Inscrivez-vous sur notre plateforme.</li>
-            <li>Déposez votre caution en toute sécurité.</li>
-            <li>Recevez un email avec un accusé de réception validé.</li>
-            <li>Le propriétaire reçoit également un accusé officiel.</li>
-        </ul>
-        <button class="cta-button" onclick="window.location.href='processus.html'">En savoir plus sur le processus</button>
-    </section>
-    
-    <section id="securite">
-        <h2>Une sécurité totale</h2>
-        <p>Votre dépôt est protégé par un cadre légal strict et accessible en toute transparence.</p>
-        <p>Un numéro de dossier unique vous est attribué pour garantir l’accès et la consultation.</p>
-    </section>
-    
-    <footer>
-        <p>© 2025 - Protection Caution | Contact | Mentions légales</p>
-    </footer>
+    <div class="background-container">
+        <h1>Bienvenue sur notre service de protection de caution</h1>
+        <p>Protégez votre dépôt en toute simplicité.</p>
+        <!-- Autres contenus ici -->
+        <div class="cta-buttons">
+            <a href="#inscription" class="cta-button">Inscrivez-vous maintenant</a>
+            <a href="#processus" class="cta-button">En savoir plus sur le processus</a>
+        </div>
+    </div>
 </body>
 </html>
