@@ -20,7 +20,7 @@
                     rgba(0, 0, 128, 0.7), /* Bleu plus foncé au centre */
                     rgba(0, 0, 128, 0.2) /* Bleu très clair en bas */
                 ), 
-                url('https://images.pexels.com/photos/8293700/pexels-photo-8293700.jpeg?auto=compress&cs=tinysrgb&w=600'); /* L'image en fond */
+                url('https://images.pexels.com/photos/7415127/pexels-photo-7415127.jpeg'); /* L'image en fond */
             background-size: cover; /* Cela couvre toute la zone */
             background-position: center; /* Centre l'image */
             height: 100vh; /* Hauteur pleine page */
@@ -31,6 +31,7 @@
             color: white; /* Couleur du texte */
             position: relative;
             text-align: center;
+            transition: background-position 2s ease; /* Transition pour le mouvement de l'image */
         }
 
         /* Styliser le titre */
@@ -69,14 +70,44 @@
             background-color: #45a049; /* Légère variation au survol */
         }
 
-        /* Assurer que le texte reste au-dessus de l'image */
-        .background-container h1, .background-container p {
-            z-index: 2; /* Assurer que le texte reste au-dessus de l'image */
+        /* Section sur le fonctionnement du site */
+        .fonctionnement {
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .fonctionnement h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .fonctionnement p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        .fonctionnement ol {
+            text-align: left;
+            margin: 0 auto;
+            display: inline-block;
+            font-size: 1.1em;
+        }
+
+        .fonctionnement ol li {
+            margin-bottom: 20px;
+        }
+
+        /* Effet de défilement pour cacher l'image */
+        .image-fade-out {
+            opacity: 0;
+            transition: opacity 2s ease-out;
         }
     </style>
 </head>
 <body>
-    <div class="background-container">
+    <!-- Page d'accueil avec image de fond -->
+    <div class="background-container" id="background-container">
         <h1>Bienvenue sur notre service de protection de caution</h1>
         <p>Protégez votre dépôt en toute simplicité.</p>
         <!-- Autres contenus ici -->
@@ -85,5 +116,29 @@
             <a href="#processus" class="cta-button">En savoir plus sur le processus</a>
         </div>
     </div>
+
+    <!-- Fonctionnement du site -->
+    <div class="fonctionnement" id="fonctionnement">
+        <h2>Comment ça marche ?</h2>
+        <p>Voici les étapes pour protéger votre caution facilement :</p>
+        <ol>
+            <li><strong>Inscription</strong> : Créez votre compte avec vos informations personnelles.</li>
+            <li><strong>Dépôt de caution</strong> : Déposez le montant de la caution avec un paiement sécurisé.</li>
+            <li><strong>Accusé de réception</strong> : Recevez un email avec un accusé de réception validé, garantissant la sécurité de votre dépôt, pour vous et pour le propriétaire.</li>
+            <li><strong>Protection continue</strong> : Votre dépôt est sécurisé et vous pouvez accéder à tout moment à la preuve de dépôt.</li>
+        </ol>
+    </div>
+
+    <script>
+        // Fonction pour gérer le défilement de la page
+        window.addEventListener('scroll', function() {
+            const backgroundContainer = document.getElementById('background-container');
+            if (window.scrollY > 50) {  // Lors du défilement vers le bas
+                backgroundContainer.classList.add('image-fade-out');  // Ajoute la classe pour cacher l'image
+            } else {
+                backgroundContainer.classList.remove('image-fade-out');  // Si l'utilisateur revient en haut
+            }
+        });
+    </script>
 </body>
 </html>
