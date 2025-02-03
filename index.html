@@ -3,138 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'Accueil - Protection de Caution</title>
+    <title>Page d'accueil</title>
     <style>
-        /* Reset de base pour garantir la cohérence du design */
-        * {
+        /* Styles globaux */
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            background-color: #f5f5f5;
         }
 
-        /* Style pour l'image de fond avec un dégradé bleu clair et foncé */
-        .background-container {
-            background-image: 
-                linear-gradient(
-                    rgba(0, 0, 128, 0.2), /* Bleu très clair en haut */
-                    rgba(0, 0, 128, 0.7), /* Bleu plus foncé au centre */
-                    rgba(0, 0, 128, 0.2) /* Bleu très clair en bas */
-                ), 
-                url('https://images.pexels.com/photos/7415127/pexels-photo-7415127.jpeg'); /* L'image en fond */
-            background-size: cover; /* Cela couvre toute la zone */
-            background-position: center; /* Centre l'image */
-            height: 100vh; /* Hauteur pleine page */
+        /* Conteneur principal */
+        .container {
+            position: relative;
+            height: 100vh;
+            background: url('https://images.pexels.com/photos/7415127/pexels-photo-7415127.jpeg') no-repeat center center/cover;
+            background-attachment: fixed;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white; /* Couleur du texte */
-            position: relative;
-            text-align: center;
-            transition: transform 2s ease-out; /* Transition pour le mouvement de l'image */
+            overflow: hidden;
         }
 
-        /* Styliser le titre */
-        .background-container h1 {
-            font-size: 3em;
-            font-weight: bold;
+        /* Couche superposée avec dégradé */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 123, 255, 0.6), rgba(0, 123, 255, 0.3));
+            z-index: 1;
+        }
+
+        /* Contenu de la page */
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
             margin-bottom: 20px;
         }
 
-        /* Styliser le texte introductif */
-        .background-container p {
-            font-size: 1.2em;
+        p {
+            font-size: 1.2rem;
             margin-bottom: 40px;
         }
 
-        /* Boutons d'appel à l'action */
-        .cta-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
+        /* Bouton Inscription */
         .cta-button {
-            background-color: #4CAF50; /* Vert doux */
-            color: white;
             padding: 15px 30px;
-            font-size: 1.2em;
-            text-decoration: none;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #4caf50; /* Couleur verte douce */
+            border: none;
             border-radius: 5px;
-            text-align: center;
-            width: 250px;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
         .cta-button:hover {
-            background-color: #45a049; /* Légère variation au survol */
+            transform: scale(1.1); /* Effet de grossissement au survol */
         }
 
-        /* Section sur le fonctionnement du site */
-        .fonctionnement {
-            padding: 50px 20px;
-            background-color: #f9f9f9;
+        /* Section suivante */
+        .section {
+            padding: 60px 20px;
             text-align: center;
+            background-color: #ffffff;
+            color: #333;
         }
 
-        .fonctionnement h2 {
-            font-size: 2.5em;
+        .section h2 {
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .fonctionnement p {
-            font-size: 1.1em;
+        .section p {
+            font-size: 1.2rem;
             margin-bottom: 30px;
-        }
-
-        .fonctionnement ol {
-            text-align: left;
-            margin: 0 auto;
-            display: inline-block;
-            font-size: 1.1em;
-        }
-
-        .fonctionnement ol li {
-            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Page d'accueil avec image de fond -->
-    <div class="background-container" id="background-container">
-        <h1>Bienvenue sur notre service de protection de caution</h1>
-        <p>Protégez votre dépôt en toute simplicité.</p>
-        <!-- Autres contenus ici -->
-        <div class="cta-buttons">
-            <a href="#inscription" class="cta-button">Inscrivez-vous maintenant</a>
-            <a href="#processus" class="cta-button">En savoir plus sur le processus</a>
+
+    <!-- Conteneur de la page d'accueil -->
+    <div class="container">
+        <div class="overlay"></div>
+
+        <div class="content">
+            <h1>Protégez votre caution en toute sécurité</h1>
+            <p>Inscrivez-vous dès maintenant pour sécuriser votre dépôt de caution, gratuitement et facilement.</p>
+            <button class="cta-button" onclick="window.location.href='/inscription'">Inscrivez-vous maintenant</button>
         </div>
     </div>
 
-    <!-- Fonctionnement du site -->
-    <div class="fonctionnement" id="fonctionnement">
-        <h2>Comment ça marche ?</h2>
-        <p>Voici les étapes pour protéger votre caution facilement :</p>
-        <ol>
-            <li><strong>Inscription</strong> : Créez votre compte avec vos informations personnelles.</li>
-            <li><strong>Dépôt de caution</strong> : Déposez le montant de la caution avec un paiement sécurisé.</li>
-            <li><strong>Accusé de réception</strong> : Recevez un email avec un accusé de réception validé, garantissant la sécurité de votre dépôt, pour vous et pour le propriétaire.</li>
-            <li><strong>Protection continue</strong> : Votre dépôt est sécurisé et vous pouvez accéder à tout moment à la preuve de dépôt.</li>
-        </ol>
+    <!-- Section explicative -->
+    <div class="section">
+        <h2>Comment ça fonctionne ?</h2>
+        <p>Suivez ces étapes simples pour protéger votre caution :</p>
+        <ul>
+            <li><strong>Inscription :</strong> Créez votre compte et entrez les informations nécessaires.</li>
+            <li><strong>Dépôt de caution :</strong> Déposez votre caution de manière sécurisée.</li>
+            <li><strong>Accusé de réception :</strong> Recevez un accusé de réception légale pour vous et le propriétaire.</li>
+        </ul>
     </div>
 
-    <script>
-        // Fonction pour gérer le défilement de la page
-        window.addEventListener('scroll', function() {
-            const backgroundContainer = document.getElementById('background-container');
-            let scrollPosition = window.scrollY; // Position du défilement
+    <!-- Autres sections de la page -->
+    <div class="section">
+        <h2>Des questions ?</h2>
+        <p>Contactez-nous pour plus d'informations.</p>
+    </div>
 
-            // Calculer la distance à laquelle l'image doit se déplacer
-            let translateValue = Math.min(scrollPosition / 2, 100); // Limite le déplacement à 100px
-
-            // Appliquer le déplacement de l'image en haut
-            backgroundContainer.style.transform = 'translateY(-' + translateValue + 'px)';
-        });
-    </script>
 </body>
 </html>
