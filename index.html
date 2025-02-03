@@ -3,212 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protection de Caution</title>
+    <title>Protection de votre caution - Sécurité & Sérénité</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        /* Basic styling for the layout */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background: linear-gradient(to bottom, #4A90E2, #A1C4FD);
+            color: #fff;
+            text-align: center;
         }
-
         header {
-            background-color: #333;
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 50px 20px;
         }
-
-        .logo {
-            font-size: 1.5em;
-        }
-
-        .menu {
-            display: flex;
-            list-style: none;
-        }
-
-        .menu li {
-            margin-right: 20px;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 1em;
-        }
-
-        .auth-buttons button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 2em;
-        }
-
-        .hamburger.active + .menu {
-            display: block;
-        }
-
-        .menu.active {
-            display: none;
-        }
-
-        /* Main section */
-        main {
-            padding: 30px;
-        }
-
         h1 {
-            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
-
-        #accueil {
-            text-align: center;
-            padding: 50px;
+        p {
+            font-size: 1.2em;
         }
-
-        #processus {
-            padding: 50px 0;
+        button {
             background-color: #fff;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
-        }
-        
-        .cta-button {
-            padding: 15px 25px;
-            background-color: #5cb85c;
-            color: white;
+            color: #4A90E2;
             border: none;
+            padding: 15px 25px;
+            font-size: 1.2em;
             cursor: pointer;
+            border-radius: 5px;
             margin-top: 20px;
         }
-        
-        .cta-button:hover {
-            background-color: #4cae4c;
+        button:hover {
+            background-color: #e0e0e0;
         }
-
-        .auth-buttons button:hover {
-            background-color: #45a049;
+        section {
+            padding: 40px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 20px;
         }
-
-        /* Menu hamburger styles */
-        .hamburger {
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .menu {
-                display: none;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background-color: #333;
-                width: 200px;
-                list-style: none;
-                padding: 0;
-            }
-
-            .menu li {
-                margin: 10px 0;
-                text-align: center;
-            }
-
-            .hamburger.active {
-                transform: rotate(90deg);
-            }
-
-            .menu.active {
-                display: block;
-            }
+        footer {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
-
-    <!-- Header with Navigation -->
     <header>
-        <div class="logo">Protection Caution</div>
-        <nav>
-            <ul class="menu">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#processus">Le Processus</a></li>
-                <li><a href="#locataire">Espace Locataire</a></li>
-                <li><a href="#proprietaire">Espace Propriétaire</a></li>
-                <li><a href="#depot">Dépôt de Caution</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <button onclick="window.location.href='inscription.html'">Inscription / Connexion</button>
-            </div>
-            <!-- Hamburger icon -->
-            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-        </nav>
+        <h1>Protégez votre caution locative gratuitement</h1>
+        <p>Un service fiable et sécurisé pour garantir votre dépôt.</p>
+        <button onclick="window.location.href='inscription.html'">Inscrivez-vous maintenant</button>
     </header>
-
-    <!-- Main content -->
-    <main>
-        <section id="accueil">
-            <h1>Protégez votre caution de location</h1>
-            <p>Un service sécurisé et gratuit pour garantir votre caution en toute tranquillité.</p>
-            <button class="cta-button" onclick="window.location.href='inscription.html'">Inscrivez-vous maintenant</button>
-        </section>
-
-        <section id="processus">
-            <h2>Comment ça marche ?</h2>
-            <ul>
-                <li>Inscrivez-vous sur le site.</li>
-                <li>Déposez votre caution de manière sécurisée.</li>
-                <li>Recevez un accusé de réception validé.</li>
-                <li>Le propriétaire reçoit aussi une confirmation légale.</li>
-            </ul>
-        </section>
-
-        <section id="locataire">
-            <h2>Espace Locataire</h2>
-            <p>Retrouvez toutes les informations et les étapes pour protéger votre caution en tant que locataire.</p>
-        </section>
-
-        <section id="proprietaire">
-            <h2>Espace Propriétaire</h2>
-            <p>Accédez aux informations relatives à la protection des cautions de vos locataires.</p>
-        </section>
-
-        <section id="depot">
-            <h2>Dépôt de Caution</h2>
-            <p>Commencez votre processus de dépôt sécurisé pour votre caution de location.</p>
-            <button class="cta-button" onclick="window.location.href='depot.html'">Commencer le dépôt</button>
-        </section>
-    </main>
-
-    <!-- Footer -->
+    
+    <section id="processus">
+        <h2>Comment ça marche ?</h2>
+        <ul>
+            <li>Inscrivez-vous sur notre plateforme.</li>
+            <li>Déposez votre caution en toute sécurité.</li>
+            <li>Recevez un email avec un accusé de réception validé.</li>
+            <li>Le propriétaire reçoit également un accusé officiel.</li>
+        </ul>
+        <button onclick="window.location.href='processus.html'">En savoir plus sur le processus</button>
+    </section>
+    
+    <section id="securite">
+        <h2>Une sécurité totale</h2>
+        <p>Votre dépôt est protégé par un cadre légal strict et accessible en toute transparence.</p>
+        <p>Un numéro de dossier unique vous est attribué pour garantir l’accès et la consultation.</p>
+    </section>
+    
     <footer>
-        <p>&copy; 2025 Protection Caution - Tous droits réservés</p>
+        <p>© 2025 - Protection Caution | Contact | Mentions légales</p>
     </footer>
-
-    <!-- Script for Hamburger Menu -->
-    <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.menu');
-            menu.classList.toggle('active');
-        }
-    </script>
-
 </body>
 </html>
