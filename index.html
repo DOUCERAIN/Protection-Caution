@@ -25,24 +25,38 @@
         p {
             font-size: 1.2em;
         }
-        button {
+        .cta-button {
             background-color: #4A90E2;
             color: #fff;
             border: none;
             padding: 15px 25px;
             font-size: 1.2em;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 10px;
             margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
-        button:hover {
+        .cta-button:hover {
             background-color: #357ABD;
+            transform: scale(1.05);
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
         }
         section {
             padding: 40px 20px;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             margin: 20px;
+        }
+        .badge-securite {
+            background-color: #2C3E50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1em;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
         }
         footer {
             padding: 20px;
@@ -53,8 +67,9 @@
 <body>
     <header>
         <h1>Protégez votre caution locative gratuitement</h1>
-        <p>Un service fiable et sécurisé pour garantir votre dépôt.</p>
-        <button onclick="window.location.href='inscription.html'">Inscrivez-vous maintenant</button>
+        <p>Votre dépôt, protégé en toute sérénité. Un service gratuit et 100% sécurisé pour garantir votre tranquillité.</p>
+        <button class="cta-button" onclick="window.location.href='inscription.html'">Inscrivez-vous maintenant</button>
+        <div class="badge-securite">🔒 100% Sécurisé</div>
     </header>
     
     <section id="processus">
@@ -65,7 +80,7 @@
             <li>Recevez un email avec un accusé de réception validé.</li>
             <li>Le propriétaire reçoit également un accusé officiel.</li>
         </ul>
-        <button onclick="window.location.href='processus.html'">En savoir plus sur le processus</button>
+        <button class="cta-button" onclick="window.location.href='processus.html'">En savoir plus sur le processus</button>
     </section>
     
     <section id="securite">
