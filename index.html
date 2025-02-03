@@ -31,7 +31,7 @@
             color: white; /* Couleur du texte */
             position: relative;
             text-align: center;
-            transition: background-position 2s ease; /* Transition pour le mouvement de l'image */
+            transition: transform 2s ease-out; /* Transition pour le mouvement de l'image */
         }
 
         /* Styliser le titre */
@@ -97,12 +97,6 @@
         .fonctionnement ol li {
             margin-bottom: 20px;
         }
-
-        /* Effet de défilement pour cacher l'image */
-        .image-fade-out {
-            opacity: 0;
-            transition: opacity 2s ease-out;
-        }
     </style>
 </head>
 <body>
@@ -133,11 +127,13 @@
         // Fonction pour gérer le défilement de la page
         window.addEventListener('scroll', function() {
             const backgroundContainer = document.getElementById('background-container');
-            if (window.scrollY > 50) {  // Lors du défilement vers le bas
-                backgroundContainer.classList.add('image-fade-out');  // Ajoute la classe pour cacher l'image
-            } else {
-                backgroundContainer.classList.remove('image-fade-out');  // Si l'utilisateur revient en haut
-            }
+            let scrollPosition = window.scrollY; // Position du défilement
+
+            // Calculer la distance à laquelle l'image doit se déplacer
+            let translateValue = Math.min(scrollPosition / 2, 100); // Limite le déplacement à 100px
+
+            // Appliquer le déplacement de l'image en haut
+            backgroundContainer.style.transform = 'translateY(-' + translateValue + 'px)';
         });
     </script>
 </body>
