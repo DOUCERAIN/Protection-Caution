@@ -3,124 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil</title>
+    <title>[Nom de l'entreprise] - Page d'accueil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Styles globaux */
         body {
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
-            overflow-x: hidden;
-            background-color: #f5f5f5;
+            background-color: #f4f4f4;
         }
 
-        /* Conteneur principal */
-        .container {
-            position: relative;
-            height: 100vh;
-            background: url('https://images.pexels.com/photos/7415127/pexels-photo-7415127.jpeg') no-repeat center center/cover;
-            background-attachment: fixed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        /* Couche superposée avec dégradé */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0, 123, 255, 0.6), rgba(0, 123, 255, 0.3));
-            z-index: 1;
-        }
-
-        /* Contenu de la page */
-        .content {
-            position: relative;
-            z-index: 2;
+        /* Section Introduction */
+        #introduction {
+            padding: 50px 20px;
             text-align: center;
-            color: white;
-            max-width: 80%;
-            margin: 0 auto;
+            background-color: #f9f9f9;
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-        }
-
-        /* Bouton Inscription */
-        .cta-button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: white;
-            background-color: #4caf50; /* Couleur verte douce */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.1); /* Effet de grossissement au survol */
-        }
-
-        /* Section suivante */
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #ffffff;
+        #introduction h2 {
+            font-size: 2rem;
             color: #333;
         }
 
-        .section h2 {
+        #introduction p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        #introduction strong {
+            font-weight: 700;
+            color: #1e90ff;
+        }
+
+        /* Page principale */
+        .main-content {
+            padding: 60px 20px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://images.pexels.com/photos/7415127/pexels-photo-7415127.jpeg') no-repeat center center/cover;
+            text-align: center;
+            color: #333;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-content h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .section p {
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
             font-size: 1.2rem;
-            margin-bottom: 30px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
+    <!-- Introduction de l'entreprise -->
+    <section id="introduction">
+        <h2>Bienvenue chez <strong>[Nom de l'entreprise]</strong></h2>
+        <p>
+            <strong>Chez [Nom de l'entreprise]</strong>, notre mission est simple : <strong>protéger votre dépôt de garantie</strong> avec un <strong>service totalement gratuit</strong>, clair et sécurisé. Nous sommes là pour vous offrir une <strong>tranquillité d'esprit</strong>, que vous soyez <strong>étudiant</strong>, <strong>professionnel</strong> ou en <strong>colocation</strong>. Profitez d'un <strong>accompagnement complet</strong>, de l’inscription à la gestion de votre caution, sans stress et en toute sécurité.
+        </p>
+    </section>
 
-    <!-- Conteneur de la page d'accueil -->
-    <div class="container">
-        <div class="overlay"></div>
+    <!-- Section principale avec image de fond -->
+    <section class="main-content">
+        <h2>Protégez votre caution dès maintenant</h2>
+        <a href="#inscription" class="cta-button">Inscrivez-vous maintenant</a>
+    </section>
 
-        <div class="content">
-            <h1>Protégez votre caution en toute sécurité</h1>
-            <p>Inscrivez-vous dès maintenant pour sécuriser votre dépôt de caution, gratuitement et facilement.</p>
-            <button class="cta-button" onclick="window.location.href='/inscription'">Inscrivez-vous maintenant</button>
-        </div>
-    </div>
-
-    <!-- Section explicative -->
-    <div class="section">
+    <!-- Explication du fonctionnement -->
+    <section id="fonctionnement">
         <h2>Comment ça fonctionne ?</h2>
-        <p>Suivez ces étapes simples pour protéger votre caution :</p>
-        <ul>
-            <li><strong>Inscription :</strong> Créez votre compte et entrez les informations nécessaires.</li>
-            <li><strong>Dépôt de caution :</strong> Déposez votre caution de manière sécurisée.</li>
-            <li><strong>Accusé de réception :</strong> Recevez un accusé de réception légale pour vous et le propriétaire.</li>
-        </ul>
-    </div>
-
-    <!-- Autres sections de la page -->
-    <div class="section">
-        <h2>Des questions ?</h2>
-        <p>Contactez-nous pour plus d'informations.</p>
-    </div>
-
+        <p>
+            1. **Inscription facile** : Remplissez un simple formulaire pour créer votre compte.
+        </p>
+        <p>
+            2. **Dépôt de caution sécurisé** : Déposez votre caution en toute sécurité avec la garantie d'un accusé de réception.
+        </p>
+        <p>
+            3. **Confirmation** : Recevez une confirmation par email et le propriétaire aussi, pour garantir la protection de votre dépôt.
+        </p>
+    </section>
 </body>
 </html>
