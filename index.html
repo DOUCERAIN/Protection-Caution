@@ -3,273 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protection de Caution | Service Gratuit</title>
+    <title>Protection de Caution</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        /* Style général */
+        /* Basic styling for the layout */
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f4f4f9;
         }
 
-        /* Header */
         header {
-            background-color: #1e90ff;
+            background-color: #333;
             color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin-right: 20px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .auth-buttons button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 2em;
+        }
+
+        .hamburger.active + .menu {
+            display: block;
+        }
+
+        .menu.active {
+            display: none;
+        }
+
+        /* Main section */
+        main {
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #accueil {
             text-align: center;
             padding: 50px;
         }
 
-        /* Menu Hamburger */
-        .menu {
-            display: none;
-        }
-        .menu-icon {
-            cursor: pointer;
-            font-size: 30px;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            display: block;
-        }
-        .menu-links {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1000;
-            align-items: center;
-            justify-content: space-around;
-            display: none;
-            flex-direction: column;
-            height: 100%;
-        }
-        .menu-links a {
-            color: white;
-            text-decoration: none;
-            padding: 20px;
-            font-size: 20px;
-            text-align: center;
-            width: 100%;
-            display: block;
-        }
-        .menu-links a:hover {
-            background-color: #555;
-        }
-        .show-menu .menu-links {
-            display: block;
+        #processus {
+            padding: 50px 0;
+            background-color: #fff;
         }
 
-        /* Navigation classique */
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            display: inline-block;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
-
-        /* CTA Button */
-        .cta-button {
-            background-color: #28a745;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .cta-button:hover {
-            background-color: #218838;
-        }
-
-        /* Container */
-        .container {
-            padding: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        /* Sections */
-        .section {
-            margin: 40px 0;
-        }
-        .section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        .section p {
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-
-        /* Formulaire d'Inscription */
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .form-container input, .form-container select, .form-container button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        .form-container button {
-            background-color: #28a745;
-            color: white;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-        }
-        .form-container button:hover {
-            background-color: #218838;
-        }
-
-        /* Footer */
         footer {
-            background-color: #333;
-            color: white;
             text-align: center;
             padding: 20px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            background-color: #333;
+            color: white;
         }
-        .footer-links a {
-            color: #ffb74d;
-            text-decoration: none;
-            margin: 0 10px;
+        
+        .cta-button {
+            padding: 15px 25px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            background-color: #4cae4c;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        /* Menu hamburger styles */
+        .hamburger {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: 200px;
+                list-style: none;
+                padding: 0;
+            }
+
+            .menu li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hamburger.active {
+                transform: rotate(90deg);
+            }
+
+            .menu.active {
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Menu Hamburger -->
-    <div class="menu">
-        <button class="menu-icon" onclick="toggleMenu()">☰ Menu</button>
-        <div class="menu-links">
-            <a href="#accueil">Accueil</a>
-            <a href="#inscription">Inscription</a>
-            <a href="#processus">Le Processus</a>
-            <a href="#contact">Contact</a>
-            <a href="#mentions-legales">Mentions légales</a>
-        </div>
-    </div>
-
-    <!-- Header avec Titre Principal -->
+    <!-- Header with Navigation -->
     <header>
-        <h1>Protégez votre Caution en toute Simplicité et Sécurité</h1>
+        <div class="logo">Protection Caution</div>
+        <nav>
+            <ul class="menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#processus">Le Processus</a></li>
+                <li><a href="#locataire">Espace Locataire</a></li>
+                <li><a href="#proprietaire">Espace Propriétaire</a></li>
+                <li><a href="#depot">Dépôt de Caution</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button onclick="window.location.href='inscription.html'">Inscription / Connexion</button>
+            </div>
+            <!-- Hamburger icon -->
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        </nav>
     </header>
 
-    <!-- Section d'Introduction -->
-    <div class="container" id="accueil">
-        <section class="section">
-            <h2>Pourquoi choisir notre service ?</h2>
-            <p>Notre service gratuit vous garantit une protection totale de votre caution de location. Inscrivez-vous facilement et profitez d'une sécurité renforcée, d'un accompagnement juridique, et d'une gestion fluide de votre caution.</p>
+    <!-- Main content -->
+    <main>
+        <section id="accueil">
+            <h1>Protégez votre caution de location</h1>
+            <p>Un service sécurisé et gratuit pour garantir votre caution en toute tranquillité.</p>
+            <button class="cta-button" onclick="window.location.href='inscription.html'">Inscrivez-vous maintenant</button>
         </section>
 
-        <!-- Image Section -->
-        <section class="section">
-            <h2>Une expérience simple et sereine</h2>
-            <img src="assets/images/votre-image.jpg" alt="Un locataire et son propriétaire se serrant la main dans un salon lumineux et cosy">
+        <section id="processus">
+            <h2>Comment ça marche ?</h2>
+            <ul>
+                <li>Inscrivez-vous sur le site.</li>
+                <li>Déposez votre caution de manière sécurisée.</li>
+                <li>Recevez un accusé de réception validé.</li>
+                <li>Le propriétaire reçoit aussi une confirmation légale.</li>
+            </ul>
         </section>
 
-        <!-- Processus -->
-        <section class="section" id="processus">
-            <h2>Comment ça fonctionne ?</h2>
-            <p>Voici les étapes simples pour protéger votre caution :</p>
-            <ol>
-                <li>Inscrivez-vous sur notre site.</li>
-                <li>Déposez votre caution en toute sécurité.</li>
-                <li>Recevez un accusé de réception pour vous et le propriétaire.</li>
-                <li>Profitez d'une sécurité totale tout au long de votre location.</li>
-            </ol>
+        <section id="locataire">
+            <h2>Espace Locataire</h2>
+            <p>Retrouvez toutes les informations et les étapes pour protéger votre caution en tant que locataire.</p>
         </section>
 
-        <!-- Call to Action -->
-        <section class="section">
-            <a href="#inscription" class="cta-button">Inscrivez-vous maintenant</a>
-            <p>Ou <a href="#processus" class="cta-button">En savoir plus sur le processus</a></p>
+        <section id="proprietaire">
+            <h2>Espace Propriétaire</h2>
+            <p>Accédez aux informations relatives à la protection des cautions de vos locataires.</p>
         </section>
-    </div>
+
+        <section id="depot">
+            <h2>Dépôt de Caution</h2>
+            <p>Commencez votre processus de dépôt sécurisé pour votre caution de location.</p>
+            <button class="cta-button" onclick="window.location.href='depot.html'">Commencer le dépôt</button>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="#mentions-legales">Mentions légales</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <p>&copy; 2025 Protection de Caution. Tous droits réservés.</p>
+        <p>&copy; 2025 Protection Caution - Tous droits réservés</p>
     </footer>
 
-    <!-- Page d'Inscription -->
-    <div id="inscription" style="display:none;">
-        <div class="form-container">
-            <h2>Formulaire d'Inscription</h2>
-            <form>
-                <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" required>
-
-                <label for="prenom">Prénom</label>
-                <input type="text" id="prenom" name="prenom" required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="motdepasse">Mot de passe</label>
-                <input type="password" id="motdepasse" name="motdepasse" required>
-
-                <label for="confirm_motdepasse">Confirmer le mot de passe</label>
-                <input type="password" id="confirm_motdepasse" name="confirm_motdepasse" required>
-
-                <label>
-                    <input type="checkbox" required> J’accepte les <a href="#mentions-legales">termes et conditions</a>
-                </label>
-                
-                <label>
-                    <input type="checkbox"> Recevoir des mises à jour
-                </label>
-
-                <label for="statut">Vous êtes :</label>
-                <select id="statut" name="statut">
-                    <option value="etudiant">Étudiant</option>
-                    <option value="professionnel">Professionnel</option>
-                    <option value="autre">Autre</option>
-                </select>
-
-                <button type="submit">S'inscrire</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Script pour Menu Hamburger -->
+    <!-- Script for Hamburger Menu -->
     <script>
         function toggleMenu() {
-            document.body.classList.toggle('show-menu');
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
         }
     </script>
+
 </body>
 </html>
