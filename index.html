@@ -21,7 +21,52 @@
             padding: 50px;
         }
 
-        /* Navigation */
+        /* Menu Hamburger */
+        .menu {
+            display: none;
+        }
+        .menu-icon {
+            cursor: pointer;
+            font-size: 30px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            display: block;
+        }
+        .menu-links {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            align-items: center;
+            justify-content: space-around;
+            display: none;
+            flex-direction: column;
+            height: 100%;
+        }
+        .menu-links a {
+            color: white;
+            text-decoration: none;
+            padding: 20px;
+            font-size: 20px;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+        .menu-links a:hover {
+            background-color: #555;
+        }
+        .show-menu .menu-links {
+            display: block;
+        }
+
+        /* Navigation classique */
         nav {
             background-color: #333;
             color: white;
@@ -75,6 +120,34 @@
             line-height: 1.6;
         }
 
+        /* Formulaire d'Inscription */
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-container input, .form-container select, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .form-container button {
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+
         /* Footer */
         footer {
             background-color: #333;
@@ -94,14 +167,17 @@
 </head>
 <body>
 
-    <!-- Menu de Navigation -->
-    <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#inscription">S'inscrire</a>
-        <a href="#processus">Le Processus</a>
-        <a href="#contact">Contact</a>
-        <a href="#mentions-legales">Mentions légales</a>
-    </nav>
+    <!-- Menu Hamburger -->
+    <div class="menu">
+        <button class="menu-icon" onclick="toggleMenu()">☰ Menu</button>
+        <div class="menu-links">
+            <a href="#accueil">Accueil</a>
+            <a href="#inscription">Inscription</a>
+            <a href="#processus">Le Processus</a>
+            <a href="#contact">Contact</a>
+            <a href="#mentions-legales">Mentions légales</a>
+        </div>
+    </div>
 
     <!-- Header avec Titre Principal -->
     <header>
@@ -140,9 +216,18 @@
         </section>
     </div>
 
-    <!-- Formulaire d'Inscription -->
-    <div class="container" id="inscription">
-        <section class="section">
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#mentions-legales">Mentions légales</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2025 Protection de Caution. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Page d'Inscription -->
+    <div id="inscription" style="display:none;">
+        <div class="form-container">
             <h2>Formulaire d'Inscription</h2>
             <form>
                 <label for="nom">Nom</label>
@@ -175,19 +260,16 @@
                     <option value="autre">Autre</option>
                 </select>
 
-                <button type="submit" class="cta-button">S'inscrire</button>
+                <button type="submit">S'inscrire</button>
             </form>
-        </section>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="#mentions-legales">Mentions légales</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <p>&copy; 2025 Protection de Caution. Tous droits réservés.</p>
-    </footer>
-
+    <!-- Script pour Menu Hamburger -->
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('show-menu');
+        }
+    </script>
 </body>
 </html>
