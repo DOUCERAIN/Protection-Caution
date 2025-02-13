@@ -3,162 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <title>Protection Caution</title>
     <style>
-        /* Styles globaux */
+        /* Style global */
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
-            overflow-x: hidden;
-            background-color: #f5f5f5;
+            background-color: #f4f4f9;
         }
 
-        /* Conteneur principal */
-        .container {
-            position: relative;
-            height: 100vh;
-            background: url('https://images.pexels.com/photos/7415127/pexels-photo-7415127.jpeg') no-repeat center center/cover;
-            background-attachment: fixed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0, 123, 255, 0.6), rgba(0, 123, 255, 0.3));
-            z-index: 1;
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
+        /* Page d'Accueil 1 */
+        .page-accueil {
             text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #003366;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .button {
+            background-color: #4CAF50;
             color: white;
-            max-width: 80%;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-        }
-
-        .cta-button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: white;
-            background-color: #4caf50;
+            padding: 15px 32px;
+            font-size: 18px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
 
-        .cta-button:hover {
-            transform: scale(1.1);
+        .button:hover {
+            background-color: #45a049;
         }
 
-        .form-container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            margin: auto;
+        .information {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .info-item {
+            width: 30%;
+            background-color: #e6f7e6;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item h2 {
+            color: #003366;
+        }
+
+        .image-container {
             margin-top: 50px;
+            background-color: #003366;
+            padding: 20px;
         }
 
-        input, select {
+        .image-container img {
             width: 100%;
+            height: auto;
+        }
+
+        /* Page d'Inscription 1 */
+        .page-inscription {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-inscription header h1 {
+            text-align: center;
+            color: #003366;
+        }
+
+        .page-inscription form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .page-inscription label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .page-inscription input, .page-inscription select {
             padding: 10px;
-            margin-bottom: 10px;
+            font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4caf50;
+        .page-inscription button {
+            background-color: #4CAF50;
             color: white;
+            padding: 15px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
 
-        button:hover {
+        .page-inscription button:hover {
             background-color: #45a049;
+        }
+
+        .confirmation-message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #28a745;
+        }
+
+        /* Message de redirection après inscription */
+        .page-confirmation {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 30px;
+        }
+
+        .confirmation-message p {
+            font-size: 20px;
+            color: #003366;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="overlay"></div>
-        <div class="content">
-            <h1>Protégez votre caution en toute sécurité</h1>
-            <p>Inscrivez-vous dès maintenant pour sécuriser votre dépôt de caution, gratuitement et facilement.</p>
-            <button class="cta-button" onclick="window.location.href='#inscription'">Inscrivez-vous maintenant</button>
+
+<!-- Page d'Accueil 1 -->
+<div class="page-accueil" id="accueil">
+    <header class="header">
+        <h1>Protégez votre caution en toute sécurité</h1>
+        <p>Inscrivez-vous pour bénéficier de notre service de protection des cautions locatives.</p>
+        <button class="button" onclick="window.location.href='#inscription'">Inscrivez-vous maintenant</button>
+    </header>
+
+    <section class="information">
+        <div class="info-item">
+            <h2>Protégez votre dépôt de caution</h2>
+            <p>Un service gratuit, simple et sécurisé pour protéger votre dépôt de caution.</p>
         </div>
+        <div class="info-item">
+            <h2>Suivi facile et rapide</h2>
+            <p>Suivez votre dépôt en temps réel et assurez-vous que tout est en règle.</p>
+        </div>
+        <div class="info-item">
+            <h2>Réception d'accusés de réception</h2>
+            <p>Recevez un email confirmant la protection de votre dépôt, et le propriétaire aussi !</p>
+        </div>
+    </section>
+
+    <div class="image-container">
+        <img src="image.jpg" alt="Image représentant la protection de la caution" />
     </div>
+</div>
 
-    <div id="inscription" class="form-container">
-        <h2>Inscription</h2>
-        <form id="signup-form">
-            <input type="text" id="prenom" placeholder="Prénom" required>
-            <input type="text" id="nom" placeholder="Nom" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Mot de passe" required>
-            <button type="submit">S'inscrire</button>
-        </form>
-        <p id="message" style="color: green; display: none;">Inscription réussie ! Redirection...</p>
+<!-- Page d'Inscription 1 -->
+<div class="page-inscription" id="inscription">
+    <header>
+        <h1>Inscrivez-vous pour protéger votre caution</h1>
+    </header>
+
+    <form id="form-inscription" onsubmit="handleSubmit(event)">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="motDePasse">Mot de Passe</label>
+        <input type="password" id="motDePasse" name="motDePasse" required>
+
+        <label for="statut">Vous êtes :</label>
+        <select id="statut" name="statut" required>
+            <option value="etudiant">Etudiant</option>
+            <option value="professionnel">Professionnel</option>
+            <option value="autre">Autre</option>
+        </select>
+
+        <button type="submit">S'inscrire</button>
+    </form>
+
+    <div id="message-confirmation" class="confirmation-message"></div>
+
+    <!-- Message de redirection après inscription -->
+    <div class="page-confirmation">
+        <p id="confirmationMessage">Félicitations, votre inscription a été réussie ! Vous allez maintenant être redirigé vers la page d’accueil.</p>
     </div>
+</div>
 
-    <script>
-        const supabaseUrl = "rentre l'url";
-        const supabaseKey = "rentre la clef API";
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+<script>
+    // Fonction pour gérer l'envoi des données à Supabase
+    async function handleSubmit(event) {
+        event.preventDefault();
 
-        document.getElementById("signup-form").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            const prenom = document.getElementById("prenom").value;
-            const nom = document.getElementById("nom").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            
-            const { user, error } = await supabase.auth.signUp({ email, password }, {
-                data: { prenom, nom }
-            });
-            
-            if (error) {
-                alert("Erreur: " + error.message);
-            } else {
-                document.getElementById("message").style.display = "block";
-                setTimeout(() => {
-                    window.location.href = "/";
-                }, 2000);
-            }
+        // Récupérer les valeurs du formulaire
+        const formData = {
+            nom: document.getElementById('nom').value,
+            prenom: document.getElementById('prenom').value,
+            email: document.getElementById('email').value,
+            motDePasse: document.getElementById('motDePasse').value,
+            statut: document.getElementById('statut').value,
+        };
+
+        // URL et clé API Supabase (à remplacer par tes informations)
+        const url = https://vvwufymvpkhmlqexntdn.supabase.co; // Remplace par l'URL de ton Supabase
+        const apiKey = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2d3VmeW12cGtobWxxZXhudGRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk0NzY2MTMsImV4cCI6MjA1NTA1MjYxM30.iflhr-cehWYqHxH5u5jk6-QXF2IWtDcTJegjpNrVakU; // Remplace par ta clé API Supabase
+
+        // Envoi des données via POST
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`,
+                'apikey': apiKey
+            },
+            body: JSON.stringify(formData),
         });
-    </script>
+
+        if (response.ok) {
+            // Afficher le message de succès
+            document.getElementById('message-confirmation').textContent = "Félicitations, votre inscription a été réussie !";
+
+            // Afficher la page de confirmation
+            document.querySelector('.page-confirmation').style.display = 'block';
+
+            // Rediriger après quelques secondes
+            setTimeout(() => {
+                window.location.href = '#accueil';  // Redirection vers la page d'accueil
+            }, 3000);  // 3 secondes de délai
+        } else {
+            // Gérer les erreurs, par exemple, afficher un message d'erreur
+            alert('Une erreur est survenue. Veuillez réessayer.');
+        }
+    }
+</script>
+
 </body>
 </html>
