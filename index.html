@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil</title>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <style>
+        /* Styles globaux */
         body {
             margin: 0;
             padding: 0;
@@ -13,6 +14,8 @@
             overflow-x: hidden;
             background-color: #f5f5f5;
         }
+
+        /* Conteneur principal */
         .container {
             position: relative;
             height: 100vh;
@@ -21,18 +24,38 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
+
         .overlay {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(to bottom, rgba(0, 123, 255, 0.6), rgba(0, 123, 255, 0.3));
+            z-index: 1;
         }
+
         .content {
             position: relative;
+            z-index: 2;
             text-align: center;
             color: white;
             max-width: 80%;
+            margin: 0 auto;
         }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
         .cta-button {
             padding: 15px 30px;
             font-size: 1.2rem;
@@ -41,23 +64,38 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+        }
+
         .form-container {
             background: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
             max-width: 400px;
             margin: auto;
             margin-top: 50px;
         }
-        input {
+
+        input, select {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
         button {
             width: 100%;
             padding: 10px;
@@ -65,11 +103,12 @@
             color: white;
             border: none;
             border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
         }
-        .message {
-            text-align: center;
-            margin-top: 10px;
-            color: green;
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -78,37 +117,46 @@
         <div class="overlay"></div>
         <div class="content">
             <h1>Protégez votre caution en toute sécurité</h1>
-            <p>Inscrivez-vous dès maintenant pour sécuriser votre dépôt.</p>
-            <button class="cta-button" onclick="window.location.href='#inscription'">S'inscrire</button>
+            <p>Inscrivez-vous dès maintenant pour sécuriser votre dépôt de caution, gratuitement et facilement.</p>
+            <button class="cta-button" onclick="window.location.href='#inscription'">Inscrivez-vous maintenant</button>
         </div>
     </div>
+
     <div id="inscription" class="form-container">
         <h2>Inscription</h2>
         <form id="signup-form">
+            <input type="text" id="prenom" placeholder="Prénom" required>
+            <input type="text" id="nom" placeholder="Nom" required>
             <input type="email" id="email" placeholder="Email" required>
             <input type="password" id="password" placeholder="Mot de passe" required>
             <button type="submit">S'inscrire</button>
         </form>
-        <p class="message" id="message"></p>
+        <p id="message" style="color: green; display: none;">Inscription réussie ! Redirection...</p>
     </div>
+
     <script>
         const supabaseUrl = "rentre l'url";
         const supabaseKey = "rentre la clef API";
         const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-        document.getElementById("signup-form").addEventListener("submit", async (e) => {
-            e.preventDefault();
+        document.getElementById("signup-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const prenom = document.getElementById("prenom").value;
+            const nom = document.getElementById("nom").value;
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
-            const { user, error } = await supabase.auth.signUp({ email, password });
-
-            const messageEl = document.getElementById("message");
+            
+            const { user, error } = await supabase.auth.signUp({ email, password }, {
+                data: { prenom, nom }
+            });
+            
             if (error) {
-                messageEl.textContent = "Erreur : " + error.message;
-                messageEl.style.color = "red";
+                alert("Erreur: " + error.message);
             } else {
-                messageEl.textContent = "Inscription réussie ! Redirection en cours...";
-                setTimeout(() => window.location.href = "index.html", 3000);
+                document.getElementById("message").style.display = "block";
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 2000);
             }
         });
     </script>
