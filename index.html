@@ -70,45 +70,48 @@
         }
 
         .cta-button:hover {
-            transform: scale(1.1); /* Effet de grossissement au survol */
+            transform: scale(1.1);
         }
 
-        /* Section suivante */
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #ffffff;
-            color: #333;
+        /* Page d'inscription */
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            margin-top: 50px;
         }
 
-        .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
-        .section p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
         }
 
-        /* Section de présentation de l'entreprise */
-        .intro {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: #ffffff;
-            color: #333;
-            font-family: 'Arial', sans-serif;
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
-        .intro h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .intro p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -117,41 +120,39 @@
     <!-- Conteneur de la page d'accueil -->
     <div class="container">
         <div class="overlay"></div>
-
         <div class="content">
             <h1>Protégez votre caution en toute sécurité</h1>
             <p>Inscrivez-vous dès maintenant pour sécuriser votre dépôt de caution, gratuitement et facilement.</p>
-            <button class="cta-button" onclick="window.location.href='/inscription'">Inscrivez-vous maintenant</button>
+            <button class="cta-button" onclick="window.location.href='#inscription'">Inscrivez-vous maintenant</button>
         </div>
     </div>
 
-    <!-- Section présentation de l'entreprise -->
-    <div class="intro">
-        <h2>Bienvenue chez [Nom de l'entreprise]</h2>
-        <p>
-            Chez [Nom de l'entreprise], notre objectif est simple : <strong>protéger votre dépôt de garantie</strong> contre tout abus, avec un service <strong>100% gratuit, clair et sécurisé</strong>.
-            <br><br>
-            Que vous soyez étudiant, professionnel ou en colocation, nous vous offrons une <strong>tranquillité d'esprit</strong> totale.
-            <br><br>
-            Avec nous, <strong>fini les abus sur votre caution</strong>, vous pouvez dormir sur vos deux oreilles !
-        </p>
-    </div>
-
-    <!-- Section explicative -->
-    <div class="section">
-        <h2>Comment ça fonctionne ?</h2>
-        <p>Suivez ces étapes simples pour protéger votre caution :</p>
-        <ul>
-            <li><strong>Inscription :</strong> Créez votre compte et entrez les informations nécessaires.</li>
-            <li><strong>Dépôt de caution :</strong> Déposez votre caution de manière sécurisée.</li>
-            <li><strong>Accusé de réception :</strong> Recevez un accusé de réception légale pour vous et le propriétaire.</li>
-        </ul>
-    </div>
-
-    <!-- Autres sections de la page -->
-    <div class="section">
-        <h2>Des questions ?</h2>
-        <p>Contactez-nous pour plus d'informations.</p>
+    <!-- Section Inscription -->
+    <div id="inscription" class="form-container">
+        <h2>Inscription</h2>
+        <form action="/submit_inscription" method="POST">
+            <input type="text" name="prenom" placeholder="Prénom" required>
+            <input type="text" name="nom" placeholder="Nom" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="email" name="confirm_email" placeholder="Confirmez votre email" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <input type="password" name="confirm_password" placeholder="Confirmez le mot de passe" required>
+            <select name="situation" required>
+                <option value="">Vous êtes :</option>
+                <option value="etudiant">Étudiant</option>
+                <option value="professionnel">Professionnel</option>
+                <option value="autre">Autre</option>
+            </select>
+            <div class="checkbox-container">
+                <input type="checkbox" name="terms" required>
+                <label for="terms">J’accepte les termes et conditions</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" name="updates">
+                <label for="updates">Recevoir les mises à jour et informations</label>
+            </div>
+            <button type="submit">S'inscrire</button>
+        </form>
     </div>
 
 </body>
